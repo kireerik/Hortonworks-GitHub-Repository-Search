@@ -15,13 +15,13 @@ export class AppComponent implements OnInit {
 
   apiUrl = 'https://api.github.com/search/repositories?q=';
 
-  myControl = new FormControl();
+  name = new FormControl();
   filteredOptions: string[];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.myControl.valueChanges.subscribe(value =>
+    this.name.valueChanges.subscribe(value =>
       this.http.get<any>(this.apiUrl + value).subscribe(data =>
         this.filteredOptions = data.items.map(({full_name}) => full_name)
       )
