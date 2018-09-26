@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
 
 import { HttpClient } from '@angular/common/http';
+
+interface Item {
+  full_name: string
+}
+
+interface Repository {
+  items: Array<Item>
+}
 
 @Component({
   selector: 'app-root',
@@ -22,7 +28,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.name.valueChanges.subscribe(value =>
-      this.http.get<any>(this.apiUrl + value).subscribe(data =>
+      this.http.get<Repository>(this.apiUrl + value).subscribe(data =>
         this.filteredOptions = data.items.map(({full_name}) => full_name)
       )
     );
