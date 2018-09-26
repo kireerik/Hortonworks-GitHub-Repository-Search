@@ -23,7 +23,13 @@ export class RepositoryService {
     return new Observable(observer =>
       this.http.get<Repository>(this.apiUrl + name).subscribe(data =>
         observer.next(data.items.map(({full_name}) => full_name))
-      )
+      , error => {
+        if (error.status === 403 && error.error.documentation_url === 'https://developer.github.com/v3/#rate-limiting') {
+          const retryTimeout = error.headers.get('X-RateLimit-Reset') - Math.round(Date.now() / 1000);
+
+          observer.error(retryTimeout);
+        }
+      })
     );
   }
 }
