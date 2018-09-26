@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {
   MatAutocompleteModule, MatInputModule
@@ -11,4 +11,4 @@ import {
     , MatProgressSpinnerModule
   ]
 })
-export class MaterialModule { }
+export class MaterialModule {}
