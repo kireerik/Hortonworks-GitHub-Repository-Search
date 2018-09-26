@@ -14,14 +14,21 @@ export class AppComponent implements OnInit {
   name = new FormControl();
   filteredOptions: string[];
 
+  showRepositoryNamesLoadingIndicator = false;
+
   constructor(private repositoryService: RepositoryService) {}
 
   ngOnInit() {
     this.name.valueChanges.subscribe(value => {
-      if (value)
-        this.repositoryService.getRepositories(value).subscribe((repositoryNames: string[]) =>
-          this.filteredOptions = repositoryNames
-        )
+      if (value) {
+        this.showRepositoryNamesLoadingIndicator = true;
+
+        this.repositoryService.getRepositories(value).subscribe((repositoryNames: string[]) => {
+          this.filteredOptions = repositoryNames;
+
+          this.showRepositoryNamesLoadingIndicator = false;
+        });
+      }
     });
   }
 }
