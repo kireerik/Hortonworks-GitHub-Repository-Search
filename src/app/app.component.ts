@@ -17,10 +17,11 @@ export class AppComponent implements OnInit {
   constructor(private repositoryService: RepositoryService) {}
 
   ngOnInit() {
-    this.name.valueChanges.subscribe(value =>
-      this.repositoryService.getRepositories(value).subscribe((repositoryNames: string[]) =>
-        this.filteredOptions = repositoryNames
-      )
-    );
+    this.name.valueChanges.subscribe(value => {
+      if (value)
+        this.repositoryService.getRepositories(value).subscribe((repositoryNames: string[]) =>
+          this.filteredOptions = repositoryNames
+        )
+    });
   }
 }
