@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.name.valueChanges.subscribe(value =>
-      this.repositoryService.getRepositories(value).subscribe(data =>
-        this.filteredOptions = data.items.map(({full_name}) => full_name)
+      this.repositoryService.getRepositories(value).subscribe((repositoryNames: string[]) =>
+        this.filteredOptions = repositoryNames
       )
     );
   }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs';
+
 interface Item {
   full_name: string;
 }
@@ -18,6 +20,10 @@ export class RepositoryService {
   constructor(private http: HttpClient) {}
 
   getRepositories(name: string) {
-    return this.http.get<Repository>(this.apiUrl + name);
+    return new Observable(observer =>
+      this.http.get<Repository>(this.apiUrl + name).subscribe(data =>
+        observer.next(data.items.map(({full_name}) => full_name))
+      )
+    );
   }
 }
