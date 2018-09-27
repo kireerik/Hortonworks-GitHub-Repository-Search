@@ -1,13 +1,6 @@
 .main {
-	padding: 0 30px;
-}
-.center {
-	text-align:center
+	padding: 0 30px 30px 30px;
 }
 .hidden {
 	visibility: hidden;
-}
-
-.width100Percent {
-	width: 100%;
 }

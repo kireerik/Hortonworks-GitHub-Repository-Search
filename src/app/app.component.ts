@@ -10,7 +10,7 @@ import {Repository, RepositoryService} from './repository.service';
 @Component({
   selector: 'app-root'
   , templateUrl: './app.component.html'
-  , styleUrls: ['./app.component.css']
+  , styleUrls: ['./styles.css', './app.component.css']
 })
 export class AppComponent implements OnInit {
   name = new FormControl();
