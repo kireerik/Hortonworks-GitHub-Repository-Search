@@ -1,6 +1,6 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import {Component, OnChanges, Input} from '@angular/core';
 
-import {RepositoryIssueService} from './repositoryIssue.service';
+import {RepositoryIssueService} from './repository.issue.service';
 
 import {getLoadingIndicatorDefaultValues, load} from './load';
 
