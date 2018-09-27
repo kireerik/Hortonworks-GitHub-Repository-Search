@@ -3,12 +3,12 @@ import {FormControl} from '@angular/forms';
 
 import {RepositoryService} from './repository.service';
 
-import {getLoadingIndicatorDefaultValues, load} from './shared/load';
+import {getLoadingIndicatorDefaultValues, load} from '../shared/load';
 
 @Component({
   selector: 'app-root'
   , templateUrl: './app.component.html'
-  , styleUrls: ['./shared/styles.css', './app.component.css']
+  , styleUrls: ['../shared/styles.css', './app.component.css']
 })
 export class AppComponent implements OnInit {
   name = new FormControl();

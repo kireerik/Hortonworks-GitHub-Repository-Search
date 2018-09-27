@@ -8,7 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {MaterialModule} from './material.module';
 
-import {AppComponent} from './app.component';
+import {AppComponent} from './main/app.component';
 import {RepositoryComponent} from './repository/repository.component';
 
 @NgModule({
