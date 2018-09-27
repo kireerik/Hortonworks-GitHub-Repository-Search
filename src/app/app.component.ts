@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
+import {MatAutocompleteSelectedEvent} from '@angular/material';
+
 import {animate} from './animate';
 
-import {RepositoryService} from './repository.service';
+import {Repository, RepositoryService} from './repository.service';
 
 @Component({
   selector: 'app-root'
@@ -24,6 +26,12 @@ export class AppComponent implements OnInit {
   };
 
   constructor(private repositoryService: RepositoryService) {}
+
+  repository: Repository;
+
+  onRepositoryNameChanged(event: MatAutocompleteSelectedEvent) {
+    this.repository = this.repositoryService.getRepository(event.option.value);
+  }
 
   ngOnInit() {
     let subscribtion;

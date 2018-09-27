@@ -9,10 +9,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {MaterialModule} from './material.module';
 
 import {AppComponent} from './app.component';
+import {RepositoryComponent} from './repository.component';
 
 @NgModule({
   declarations: [
     AppComponent
+    , RepositoryComponent
   ]
   , imports: [
     BrowserModule

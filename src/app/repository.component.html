@@ -1,0 +1,25 @@
+<mat-card *ngIf="repository">
+	<mat-card-header>
+		<mat-card-title><h2>{{repository.full_name}}</h2></mat-card-title>
+		<mat-card-subtitle>{{repository.description}}</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-list role="list">
+			<mat-grid-list role="listitem" cols="3" rowHeight="3:1">
+				<mat-grid-tile>
+					<mat-icon matBadge="{{repository.forks_count}}" matBadgeOverlap="false" matTooltip="{{repository.forks_count}} forks">usb</mat-icon>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-icon matBadge="{{repository.stargazers_count}}" matBadgeOverlap="false" matTooltip="{{repository.stargazers_count}} stars">grade</mat-icon>
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-icon matBadge="{{repository.open_issues_count}}" matBadgeOverlap="false" matTooltip="{{repository.open_issues_count}} open issues">error_outline</mat-icon>
+				</mat-grid-tile>
+			</mat-grid-list>
+			<mat-list-item role="listitem">
+				<mat-icon mat-list-icon>link</mat-icon>
+				<a href="{{repository.html_url}}" target="_blank" rel="noopener">{{repository.html_url}}</a>
+			</mat-list-item>
+		</mat-list>
+	</mat-card-content>
+</mat-card>
