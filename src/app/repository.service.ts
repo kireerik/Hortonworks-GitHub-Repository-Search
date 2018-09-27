@@ -30,9 +30,15 @@ export class RepositoryService {
   getRepositories(name: string) {
     return new Observable(observer =>
       this.http.get<Repositories>(this.apiUrl + name).subscribe(data => {
-        observer.next(data.items.map(({full_name}) => full_name));
+        this.repositories = data.items.map(({
+          full_name
+          , html_url, description, forks_count, stargazers_count, open_issues_count
+        }) => ({
+          full_name
+          , html_url, description, forks_count, stargazers_count, open_issues_count
+        }));
 
-        this.repositories = data.items;
+        observer.next(this.repositories.map(({full_name}) => full_name));
       }
       , error => {
         if (error.status === 403 && error.error.documentation_url === 'https://developer.github.com/v3/#rate-limiting') {
