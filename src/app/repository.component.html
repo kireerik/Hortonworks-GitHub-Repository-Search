@@ -22,7 +22,8 @@
 			</mat-list-item>
 		</mat-list>
 		<h3>Issues</h3>
-		<table mat-table [dataSource]="dataSource" class="width100Percent">
+		<mat-progress-spinner *ngIf="repositoryIssuesLoadingIndicator.show" class="marginAuto" [color]="repositoryIssuesLoadingIndicator.color" [mode]="repositoryIssuesLoadingIndicator.mode" [value]="repositoryIssuesLoadingIndicator.value"></mat-progress-spinner>
+		<table *ngIf="!repositoryIssuesLoadingIndicator.show" mat-table [dataSource]="dataSource" class="width100Percent">
 			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 			<ng-container matColumnDef="number">

@@ -1,6 +1,9 @@
 .center {
-	text-align:center
+	text-align: center;
 }
 .width100Percent {
 	width: 100%;
+}
+.marginAuto {
+	margin: 0 auto;
 }
