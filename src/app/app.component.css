@@ -7,3 +7,7 @@
 .hidden {
 	visibility: hidden;
 }
+
+.width100Percent {
+	width: 100%;
+}
