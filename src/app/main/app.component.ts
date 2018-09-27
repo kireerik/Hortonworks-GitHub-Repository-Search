@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
     this.repository = this.repositoryService.getRepository(event.option.value)
 
   ngOnInit() {
-
     this.name.valueChanges.subscribe(value => {
       if (value) {
         load(this.subscribtion, this.repositoryNamesLoadingIndicator
