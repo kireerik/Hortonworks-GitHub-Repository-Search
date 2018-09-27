@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {NetworkService} from './network.service';
 
-export interface Issue {
+interface Issue {
   number: number;
   title: string;
   state: string;
@@ -17,8 +17,6 @@ interface Issues {
 })
 export class RepositoryIssueService {
   apiUrl = 'https://api.github.com/search/issues?q=repo:';
-
-  issues: Array<Issue>;
 
   constructor(private networkService: NetworkService) {}
 

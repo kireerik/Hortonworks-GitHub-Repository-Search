@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 
 import {NetworkService} from './network.service';
 
-export interface Repository {
+interface Repository {
   full_name: string;
 
   html_url: string;
