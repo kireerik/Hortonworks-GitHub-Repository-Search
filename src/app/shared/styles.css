@@ -4,6 +4,9 @@
 .width100Percent {
 	width: 100%;
 }
+.maxWidth100Percent {
+	max-width: 100%;
+}
 .marginAuto {
 	margin: 0 auto;
 }
