@@ -13,8 +13,6 @@ import {Repository, RepositoryService} from './repository.service';
   , styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Hortonworks-GitHub-Repository-Search';
-
   name = new FormControl();
   filteredOptions: string[];
 

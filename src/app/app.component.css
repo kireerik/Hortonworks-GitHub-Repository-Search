@@ -1,3 +1,9 @@
+.main {
+	padding: 0 30px;
+}
+.center {
+	text-align:center
+}
 .hidden {
 	visibility: hidden;
 }
