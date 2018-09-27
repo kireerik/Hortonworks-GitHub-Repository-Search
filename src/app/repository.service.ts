@@ -26,8 +26,8 @@ export class RepositoryService {
 
   constructor(private networkService: NetworkService) {}
 
-  getRepositories(name) {
-    return this.networkService.get<Repositories>(this.apiUrl, name, (observer, data) => {
+  getRepositories = name =>
+    this.networkService.get<Repositories>(this.apiUrl, name, (observer, data) => {
       this.repositories = data.items.map(({
         full_name
         , html_url, description, forks_count, stargazers_count, open_issues_count
@@ -37,10 +37,8 @@ export class RepositoryService {
       }));
 
       observer.next(this.repositories.map(({full_name}) => full_name));
-    });
-  }
+    })
 
-  getRepository(name) {
-    return this.repositories.find(repository => repository.full_name === name);
-  }
+  getRepository = name =>
+    this.repositories.find(repository => repository.full_name === name)
 }

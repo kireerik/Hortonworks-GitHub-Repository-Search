@@ -22,11 +22,10 @@ export class RepositoryIssueService {
 
   constructor(private networkService: NetworkService) {}
 
-  getIssues(repositoryName) {
-    return this.networkService.get<Issues>(this.apiUrl, repositoryName, (observer, data) =>
+  getIssues = repositoryName =>
+    this.networkService.get<Issues>(this.apiUrl, repositoryName, (observer, data) =>
       observer.next(data.items.map(({number, title, state}) => ({
         number, title, state
       })))
-    );
-  }
+    )
 }

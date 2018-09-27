@@ -9,8 +9,8 @@ import {Observable} from 'rxjs';
 export class NetworkService {
   constructor(private http: HttpClient) {}
 
-  get<Type>(apiUrl, name, handle) {
-    return new Observable(observer =>
+  get = <Type>(apiUrl, name, handle) =>
+    new Observable(observer =>
       this.http.get<Type>(apiUrl + name).subscribe(data => handle(observer, data)
       , error => {
         if (error.status === 403 && error.error.documentation_url === 'https://developer.github.com/v3/#rate-limiting') {
@@ -19,6 +19,5 @@ export class NetworkService {
           observer.error(retryTimeout);
         }
       })
-    );
-  }
+    )
 }
