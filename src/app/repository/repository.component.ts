@@ -2,12 +2,12 @@ import {Component, OnChanges, Input} from '@angular/core';
 
 import {RepositoryIssueService} from './repository.issue.service';
 
-import {getLoadingIndicatorDefaultValues, load} from './load';
+import {getLoadingIndicatorDefaultValues, load} from '../shared/load';
 
 @Component({
   selector: 'app-repository'
   , templateUrl: './repository.component.html'
-  , styleUrls: ['./styles.css']
+  , styleUrls: ['../shared/styles.css']
 })
 export class RepositoryComponent implements OnChanges {
   displayedColumns = ['number', 'title', 'state'];

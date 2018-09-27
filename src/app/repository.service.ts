@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {NetworkService} from './network.service';
+import {NetworkService} from './shared/network.service';
 
 interface Repository {
   full_name: string;
