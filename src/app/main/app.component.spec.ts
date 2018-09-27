@@ -36,7 +36,7 @@ describe('AppComponent', () => {
     ).toBeTruthy();
   }));
 
-  const title = 'Hortonworks GitHub Repository Search'
+  const title = 'Hortonworks GitHub Repository Search';
 
   it(`should render '` + title + `' as title in a h1 tag`, async(() => {
     expect(
