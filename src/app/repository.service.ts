@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 
-import {Observable} from 'rxjs';
+import {NetworkService} from './network.service';
 
 export interface Repository {
   full_name: string;
@@ -25,32 +24,23 @@ export class RepositoryService {
 
   repositories: Array<Repository>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private networkService: NetworkService) {}
 
-  getRepositories(name: string) {
-    return new Observable(observer =>
-      this.http.get<Repositories>(this.apiUrl + name).subscribe(data => {
-        this.repositories = data.items.map(({
-          full_name
-          , html_url, description, forks_count, stargazers_count, open_issues_count
-        }) => ({
-          full_name
-          , html_url, description, forks_count, stargazers_count, open_issues_count
-        }));
+  getRepositories(name) {
+    return this.networkService.get<Repositories>(this.apiUrl, name, (observer, data) => {
+      this.repositories = data.items.map(({
+        full_name
+        , html_url, description, forks_count, stargazers_count, open_issues_count
+      }) => ({
+        full_name
+        , html_url, description, forks_count, stargazers_count, open_issues_count
+      }));
 
-        observer.next(this.repositories.map(({full_name}) => full_name));
-      }
-      , error => {
-        if (error.status === 403 && error.error.documentation_url === 'https://developer.github.com/v3/#rate-limiting') {
-          const retryTimeout = error.headers.get('X-RateLimit-Reset') - Math.round(Date.now() / 1000);
-
-          observer.error(retryTimeout);
-        }
-      })
-    );
+      observer.next(this.repositories.map(({full_name}) => full_name));
+    });
   }
 
-  getRepository(name: string) {
+  getRepository(name) {
     return this.repositories.find(repository => repository.full_name === name);
   }
 }

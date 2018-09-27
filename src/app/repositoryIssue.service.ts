@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 
-import {Observable} from 'rxjs';
+import {NetworkService} from './network.service';
 
 export interface Issue {
   number: number;
@@ -21,21 +20,13 @@ export class RepositoryIssueService {
 
   issues: Array<Issue>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private networkService: NetworkService) {}
 
-  getIssues(repositoryName: string) {
-    return new Observable(observer =>
-      this.http.get<Issues>(this.apiUrl + repositoryName).subscribe(data =>
-        observer.next(data.items.map(({number, title, state}) => ({
-          number, title, state
-        })))
-      , error => {
-        if (error.status === 403 && error.error.documentation_url === 'https://developer.github.com/v3/#rate-limiting') {
-          const retryTimeout = error.headers.get('X-RateLimit-Reset') - Math.round(Date.now() / 1000);
-
-          observer.error(retryTimeout);
-        }
-      })
+  getIssues(repositoryName) {
+    return this.networkService.get<Issues>(this.apiUrl, repositoryName, (observer, data) =>
+      observer.next(data.items.map(({number, title, state}) => ({
+        number, title, state
+      })))
     );
   }
 }
