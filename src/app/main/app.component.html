@@ -3,7 +3,7 @@
     <h1>Hortonworks GitHub Repository Search</h1>
     <form>
       <mat-form-field class="width100Percent">
-        <input type="text" placeholder="Name" matInput [formControl]="name" [matAutocomplete]="auto">
+        <input type="text" placeholder="Name" matInput [formControl]="name" [matAutocomplete]="auto" autofocus>
         <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption (optionSelected)="onRepositoryNameChanged($event)">
           <mat-option *ngFor="let option of filteredOptions" [value]="option">
             {{option}}
