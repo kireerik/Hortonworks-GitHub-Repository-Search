@@ -1,17 +1,17 @@
 <div class="main">
-  <div class="center">
-    <h1>Hortonworks GitHub Repository Search</h1>
-    <form>
-      <mat-form-field class="width100Percent">
-        <input type="text" placeholder="Name" matInput [formControl]="name" [matAutocomplete]="auto" autofocus>
-        <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption (optionSelected)="onRepositoryNameChanged($event)">
-          <mat-option *ngFor="let option of filteredOptions" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-        <mat-progress-spinner matSuffix diameter="14" [ngClass]="{hidden: !repositoryNamesLoadingIndicator.show}" [color]="repositoryNamesLoadingIndicator.color" [mode]="repositoryNamesLoadingIndicator.mode" [value]="repositoryNamesLoadingIndicator.value"></mat-progress-spinner>
-      </mat-form-field>
-    </form>
-  </div>
-  <app-repository [repository]="repository"></app-repository>
+	<div class="center">
+		<h1>Hortonworks GitHub Repository Search</h1>
+		<form>
+			<mat-form-field class="width100Percent">
+				<input type="text" placeholder="Name" matInput [formControl]="name" [matAutocomplete]="auto" autofocus>
+				<mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption (optionSelected)="onRepositoryNameChanged($event)">
+					<mat-option *ngFor="let option of filteredOptions" [value]="option">
+						{{option}}
+					</mat-option>
+				</mat-autocomplete>
+				<mat-progress-spinner matSuffix diameter="14" [ngClass]="{hidden: !repositoryNamesLoadingIndicator.show}" [color]="repositoryNamesLoadingIndicator.color" [mode]="repositoryNamesLoadingIndicator.mode" [value]="repositoryNamesLoadingIndicator.value"></mat-progress-spinner>
+			</mat-form-field>
+		</form>
+	</div>
+	<app-repository [repository]="repository"></app-repository>
 </div>
